@@ -1,37 +1,59 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿static void ImprimirNotas(int[] notasx)
+{
+    Console.WriteLine("Notas del estudiante:");
+    for (int i = 0; i < notasx.Length; i++)
+    {
+        Console.WriteLine($"Nota {i+1}: {notasx[i]}");
+    }
+}
+//DEIVI NO HIZO SU TAREA
+double CalcularPromedio(int[] notasx)
+{
+    int suma = 0;
+    for (int i = 0; i < notasx.Length; i++)
+    {
+        suma += notasx[i];
+    }
+    return (double)suma / notasx.Length;
+}
+
+static int NotaMasAlta(int[] notasx)
+{
+    int notaMasAlta = notasx[0];
+    for (int i = 1; i < notasx.Length; i++)
+    {
+        if (notasx[i] > notaMasAlta)
+        {
+            notaMasAlta = notasx[i];
+        }
+    }
+    return notaMasAlta;
+}  
+
+static int NotaMasBaja(int[] notasx)
+{
+    int notaMasBaja = notasx[0];
+    for (int i = 1; i < notasx.Length; i++)
+    {
+        if (notasx[i] < notaMasBaja)
+        {
+            notaMasBaja = notasx[i];
+        }
+    }
+    return notaMasBaja;
+}           
 
 int[] notas = { 18, 20, 15, 12};
 
-Console.WriteLine("Notas del estudiante: ");
-for (int i = 0; i < notas.Length; i++)
-{
-    Console.WriteLine($"Nota {i+1}: {notas[i]}");
-}
-//Calcular el promedio de las notas
-int suma = 0; //Suma cada nota a la variablee
-for (int i = 0; i < notas.Length; i++)
-{
-    suma += notas[i]; // Suma cada nota a la variable suma
-}
-double promedio = (double)suma/notas.Length;
-Console.WriteLine($"Promedio: {promedio:F2}"); //Calcular el promedio
+//Impresión de las notas del estudiante
+ImprimirNotas(notas);
 
-// Determinar la nota más alta y la más baja
-int notaMasAlta = notas[0]; // Inicializar la nota más alta con la primera nota
-int notaMasBaja = notas[0]; // Inicializar la nota más baja con la primera nota
+// Calcular el promedio de las notas
+double promedio = CalcularPromedio(notas);
+Console.WriteLine($"Promedio: {promedio:F2}");  // Mostrar el promedio con dos decimales
 
-for (int i = 1; i < notas.Length; i++)
-{
-    if (notas[i] > notaMasAlta)
-    {
-        notaMasAlta = notas[i]; // Actualizar la nota más alta si se encuentra una mayor
-    }
-
-    if (notas[i] < notaMasBaja)
-    {
-        notaMasBaja = notas[i]; // Actualizar la nota más baja si se encuentra una menor
-    }
-}
-
+int notaMasAlta = NotaMasAlta(notas);
 Console.WriteLine($"Nota más alta: {notaMasAlta}");
-Console.WriteLine($"Nota más baja: {notaMasBaja}");
+
+int notaMasBaja = NotaMasBaja(notas);
+Console.WriteLine($"Nota más baja: {notaMasBaja}"); 
