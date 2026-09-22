@@ -15,3 +15,23 @@ for (int i = 0; i < notas.Length; i++)
 }
 double promedio = (double)suma/notas.Length;
 Console.WriteLine($"Promedio: {promedio:F2}"); //Calcular el promedio
+
+// Determinar la nota más alta y la más baja
+int notaMasAlta = notas[0]; // Inicializar la nota más alta con la primera nota
+int notaMasBaja = notas[0]; // Inicializar la nota más baja con la primera nota
+
+for (int i = 1; i < notas.Length; i++)
+{
+    if (notas[i] > notaMasAlta)
+    {
+        notaMasAlta = notas[i]; // Actualizar la nota más alta si se encuentra una mayor
+    }
+
+    if (notas[i] < notaMasBaja)
+    {
+        notaMasBaja = notas[i]; // Actualizar la nota más baja si se encuentra una menor
+    }
+}
+
+Console.WriteLine($"Nota más alta: {notaMasAlta}");
+Console.WriteLine($"Nota más baja: {notaMasBaja}");
